@@ -5,7 +5,8 @@ LOCAL_SRC_FILES:= \
 	IHelloWorldService.cpp \
 	BnHelloWorldService.cpp \
 	BpHelloWorldService.cpp \
-	HelloWorldService.cpp
+	HelloWorldService.cpp \
+	HelloWorldManager.cpp
 
 LOCAL_SHARED_LIBRARIES := \
 	libbinder \

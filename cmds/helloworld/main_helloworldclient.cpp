@@ -7,7 +7,8 @@
 #include <utils/Log.h>
 #include <utils/RefBase.h>
 
-#include <helloworld/IHelloWorldService.h>
+// #include <helloworld/IHelloWorldService.h>
+#include <helloworld/HelloWorldManager.h>
 
 
 #define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)  
@@ -20,26 +21,33 @@ int main() {
 
     LOGI("HelloWorldClient is starting now");
 
-    sp<IServiceManager> sm = defaultServiceManager();
-    sp<IBinder> binder;
-    sp<IHelloWorldService> mHelloWorldManager;
+    // sp<IServiceManager> sm = defaultServiceManager();
+    // sp<IBinder> binder;
+    // sp<IHelloWorldService> mHelloWorldManager;
 
-    do {
-        binder = sm->getService(String16("android.capsane.IHelloWorldService"));
-        // binder = sm->getService(String16("helloworldservice"));
-        if (binder != 0) {
-            break;
-        }
-        LOGI("HelloWorldService is not working, waiting...");
-        usleep(60000);
-    } while (true);
+    // do {
+    //     binder = sm->getService(String16("android.capsane.IHelloWorldService"));
+    //     // binder = sm->getService(String16("helloworldservice"));
+    //     if (binder != 0) {
+    //         break;
+    //     }
+    //     LOGI("HelloWorldService is not working, waiting...");
+    //     usleep(60000);
+    // } while (true);
 
-    mHelloWorldManager = interface_cast<IHelloWorldService>(binder);
-    int result = mHelloWorldManager->helloWorld("hello, world");
-    int policy = mHelloWorldManager->check("takePicture:camera");
+    // mHelloWorldManager = interface_cast<IHelloWorldService>(binder);
+    // int result = mHelloWorldManager->helloWorld("hello, world");
+    // int policy = mHelloWorldManager->check("takePicture:camera");
 
-    LOGI("HelloWorldClient:helloWorld() result is %d \n", result);
-    LOGI("HelloWorldClient:check() policy is %d \n", policy);
+    // LOGI("HelloWorldClient:helloWorld() result is %d \n", result);
+    // LOGI("HelloWorldClient:check() policy is %d \n", policy);
 
+// -----------------------------------------------------------------------------------------
+    HelloWorldManager mHelloWorldManager;
+    int b = mHelloWorldManager.helloWorld("world");
+    int a = mHelloWorldManager.check("hello");
+    
+    LOGI("HelloWorldClient:helloWorld() result is %d \n", b);
+    LOGI("HelloWorldClient:check() policy is %d \n", a);
     return 0;
 }

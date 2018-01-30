@@ -25,7 +25,7 @@ int HelloWorldService::helloWorld(const char* str) {
 }
 
 // TODO: decide the policy, and return it.
-status_t HelloWorldService::check(const char* api) {
+int HelloWorldService::check(const char* api) {
     LOGI("check(%s)\n", api);
     printf("check(%s)\n", api);
     /**

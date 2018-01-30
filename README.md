@@ -19,8 +19,29 @@ helloworldservice &
 helloworldclient &
 ```
 
+#### HelloWorldManager
+客户端封装为HelloWorldManager类，使用：
+```cpp
+#include "HelloWorldManger.h"
+
+HelloWorldManager mHelloWorldManager;
+int policy = mHelloWorldManger.check("getPicture");
+
+```
+
+#### init.rc
+注册Service
+设置Boot启动：on
+
+#### Singleton
+单例模式的使用不知到会不会出问题<br>
+
+#### Thread
+线程安全<br>
+当有众多的API需要访问服务<br>
+
+
 ## TOOD
-  1.封装HelloWorldManager类<br>
-  2.将服务添加到启动中<br>
-  3.单例模式<br>
-  4.线程安全<br>
+  1.init.rc<br>
+  2.单例模式<br>
+  3.线程安全<br>
