@@ -19,3 +19,8 @@ helloworldservice &
 helloworldclient &
 ```
 
+## TOOD
+  1.封装HelloWorldManager类<br>
+  2.将服务添加到启动中
+  3.单例模式
+  4.线程安全
