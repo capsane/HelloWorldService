@@ -28,18 +28,34 @@ int BpHelloWorldService::helloWorld(const char *str) {
     }
 }
 
-int BpHelloWorldService::check(const char *api) {
+int BpHelloWorldService::check(const char *resourceType) {
     Parcel data, reply;
     data.writeInterfaceToken(IHelloWorldService::getInterfaceDescriptor());
-    data.writeCString(api);
+    data.writeCString(resourceType);
     status_t status = remote()->transact(HW_CHECK, data, &reply);
     if (status != NO_ERROR) {
-        ALOGE("Error %s", strerror(-status));        
         LOGE("Error %s", strerror(-status));
         return -2000;
     } else {
-        int policy = reply.readInt32();
-        return policy;
+        int accessFlag = reply.readInt32();
+        return accessFlag;
+    }
+}
+
+int BpHelloWorldService::setAccessFlag(const char *resourceType, int accessFlag) {
+    Parcel data, reply;
+    data.writeInterfaceToken(IHelloWorldService::getInterfaceDescriptor());
+    // capsane 可能的问题
+    data.writeCString(resourceType);
+    data.writeInt32(accessFlag);
+
+    status_t status = remote()->transact(HW_SET_FLAG, data, &reply);
+    if (status != NO_ERROR) {
+        LOGE("Error %s", strerror(-status));
+        return -4000;
+    } else {
+        int result = reply.readInt32();
+        return result;
     }
 }
 

@@ -11,6 +11,15 @@ LOCAL_SHARED_LIBRARIES := \
 
 base := $(LOCAL_PATH)/../..
 
+# STL
+LOCAL_C_INCLUDES := \
+	external/stlport/stlport \
+	bionic \
+
+LOCAL_STATIC_LIBRARIES := libstlport_static 
+
+
+
 LOCAL_MODULE:= helloworldservice
 
 include $(BUILD_EXECUTABLE)

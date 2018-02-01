@@ -13,7 +13,16 @@ LOCAL_SHARED_LIBRARIES := \
 	libcutils \
 	libutils 
 
+# capsane: to use std:map
+LOCAL_C_INCLUDES := \
+	external/stlport/stlport \
+	bionic \
+
+LOCAL_STATIC_LIBRARIES := libstlport_static 
+
 LOCAL_PRELINK_MODULE := false
+
+LOCAL_CERTIFICATE := platform
 
 LOCAL_MODULE:= libhelloworld
 

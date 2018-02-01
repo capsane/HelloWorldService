@@ -25,7 +25,8 @@ public:
     ~HelloWorldManager();
 
     int helloWorld(const char* str);
-    int check(const char *api);
+    int check(const char *resourceType);
+    int setAccessFlag(const char *resourceType, int accessFlag);
 
 private:
     // DeathRecipient interface

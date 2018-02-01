@@ -32,6 +32,20 @@ status_t BnHelloWorldService::onTransact(uint32_t code, const Parcel &data, Parc
             return NO_ERROR;
         } break;
 
+        // 更新规则
+        case HW_SET_FLAG: {
+            // 确认正确的服务请求
+            CHECK_INTERFACE(IHelloWorldService, data, reply);
+            const char *resourceType;
+            int accessFlag;
+            // 读取客户端发送的参数，data有两个参数怎么办？？？？？？？？？？？？？？？？
+            resourceType = data.readCString();
+            accessFlag = data.readInt32();
+            // 调用输出方法, 返回值保存到reply中
+            reply->writeInt32(setAccessFlag(resourceType, accessFlag));
+            return NO_ERROR;
+        } break;
+
         default:
             return BBinder::onTransact(code, data, reply, flags);
     }

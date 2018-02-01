@@ -22,10 +22,12 @@ ANDROID_SINGLETON_STATIC_INSTANCE(HelloWorldManager)
 
 HelloWorldManager::HelloWorldManager()
 {
+    LOGI("HelloWorldManager created...");
 }
 
 HelloWorldManager::~HelloWorldManager()
 {
+    LOGI("HelloWorldManager destroyed...");
 }
 
 void HelloWorldManager::helloWorldServiceDied()
@@ -76,13 +78,23 @@ int HelloWorldManager::helloWorld(const char *str)
     return -1;
 }
 
-int HelloWorldManager::check(const char *api)
+int HelloWorldManager::check(const char *resourceType)
 {   
     if (assertState() == NO_ERROR) {
-        int policy = mHelloWorldServer->check("takePicture:camera");
-        return policy;
+        int accessFlag = mHelloWorldServer->check(resourceType);
+        return accessFlag;
     }
     return -1;
+}
+
+int HelloWorldManager::setAccessFlag(const char *resourceType, int accessFlag) 
+{
+    if (assertState() == NO_ERROR) {
+        int result = mHelloWorldServer->setAccessFlag(resourceType, accessFlag);
+        return result;
+    }
+    return -1;
+
 }
 
 // ----------------------------------------------------------------------------

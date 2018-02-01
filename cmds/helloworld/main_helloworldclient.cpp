@@ -44,10 +44,16 @@ int main() {
 
 // -----------------------------------------------------------------------------------------
     HelloWorldManager mHelloWorldManager;
-    int b = mHelloWorldManager.helloWorld("world");
-    int a = mHelloWorldManager.check("hello");
-    
-    LOGI("HelloWorldClient:helloWorld() result is %d \n", b);
-    LOGI("HelloWorldClient:check() policy is %d \n", a);
+    int flag = mHelloWorldManager.check("TAKE_PICTURE");
+    int flag1 = mHelloWorldManager.check("START_AUDIO");
+    int flag2 = mHelloWorldManager.check("START_RECORD");
+    int flag3 = mHelloWorldManager.check("hello");
+
+    int a = mHelloWorldManager.setAccessFlag("TAKE_PICTURE", 0);
+    int b = mHelloWorldManager.setAccessFlag("START_RECORD", 0);    
+    int c = mHelloWorldManager.setAccessFlag("START_RECORDING", 0);
+
+
+    LOGI("HelloWorldClient:check(takePicture), accessFlag is %d \n", flag);
     return 0;
 }

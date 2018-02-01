@@ -15,6 +15,7 @@ using namespace android;
 
 int main() {
     // 实例化，并注册到系统中
+    LOGI("instantiate HelloWorldService:");
     HelloWorldService::instantiate();
     // 创建线程池
     ProcessState::self()->startThreadPool();
