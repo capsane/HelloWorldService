@@ -65,9 +65,11 @@ int HelloWorldService::setAccessFlag(const char* rresourceType, int accessFlag) 
 
 HelloWorldService::HelloWorldService() {
     LOGI("HelloWorldService is created");
-    string resources[11] = {"TAKE_PICTURE","START_RECORDING","START_PREVIEW","START_RECORD","STOP_RECORD","START_AUDIO","STOP_AUDIO","CONTROL_VOLUME","sensorAcce","sensorGyro","sensorLight"};
+    string resources[21] = {"TAKE_PICTURE","START_RECORDING","START_PREVIEW","START_RECORD","STOP_RECORD","START_AUDIO","STOP_AUDIO","CONTROL_VOLUME",
+    "SENSOR_ACCE","SENSOR_GYRO","SENSOR_LIGH","SENSOR_TEMP","SENSOR_PROX","SENSOR_PRES","SENSOR_GRAV","SENSOR_MAGN","SENSOR_ORIE","SENSOR_LACC",
+    "SENSOR_ROTA", "SENSOR_REHU", "SENSOR_AMTE"};
     int len = sizeof(resources) / sizeof(resources[0]);
-    for (int i = 0; i < 11; i++) {
+    for (int i = 0; i < 21; i++) {
         string str = resources[i];
         rules.insert(pair<string,int>(str,0));
         LOGI("%s,%d\n",str.c_str(), 0);
